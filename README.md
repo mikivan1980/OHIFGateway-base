@@ -1,3 +1,67 @@
+
+
+
+
+Основной инструмент для реализации OHIFGateway.
+Применяем как lib в OHIFGateway-service, которая затем применяется в  OHIFGateway
+
+dcm4che v.X.Y.Z  ->  mvn install  ->  dcm4che-X.Y.Z-bin.zip -> copy to OHIFGateway-service\lib -> libOHIF-X.Y.Z.bin -> copy to OHIFGateway\lib
+
+
+
+!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!
+notes to release!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!
+!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!
+
+во время mvn install ругалки
+
+[INFO] Scanning for projects...
+[WARNING]
+[WARNING] Some problems were encountered while building the effective model for org.dcm4che:dcm4che-core:bundle:5.10.6
+[WARNING] 'build.plugins.plugin.version' for org.codehaus.mojo:build-helper-maven-plugin is missing. @ org.dcm4che:dcm4che-core:[unknown-version], D:\dop\java\OHIFGateway-base\dcm4che-core\pom.xml, line 179, column 15
+[WARNING] 'build.plugins.plugin.version' for org.codehaus.mojo:xml-maven-plugin is missing. @ org.dcm4che:dcm4che-core:[unknown-version], D:\dop\java\OHIFGateway-base\dcm4che-core\pom.xml, line 99, column 15
+[WARNING]
+[WARNING] Some problems were encountered while building the effective model for org.dcm4che:dcm4che-dict-arc:bundle:5.10.6
+[WARNING] 'build.plugins.plugin.version' for org.codehaus.mojo:build-helper-maven-plugin is missing. @ org.dcm4che:dcm4che-dict-arc:[unknown-version], D:\dop\java\OHIFGateway-base\dcm4che-dict-arc\pom.xml, line 136, column 15
+[WARNING] 'build.plugins.plugin.version' for org.codehaus.mojo:xml-maven-plugin is missing. @ org.dcm4che:dcm4che-dict-arc:[unknown-version], D:\dop\java\OHIFGateway-base\dcm4che-dict-arc\pom.xml, line 82, column 15
+[WARNING]
+[WARNING] Some problems were encountered while building the effective model for org.dcm4che:dcm4che-imageio:bundle:5.10.6
+[WARNING] 'build.plugins.plugin.version' for org.apache.maven.plugins:maven-surefire-plugin is missing. @ org.dcm4che:dcm4che-imageio:[unknown-version], D:\dop\java\OHIFGateway-base\dcm4che-imageio\pom.xml, line 46, column 14
+[WARNING]
+[WARNING] Some problems were encountered while building the effective model for org.dcm4che:dcm4che-assembly:pom:5.10.6
+[WARNING] 'build.plugins.plugin.version' for org.codehaus.mojo:xml-maven-plugin is missing. @ org.dcm4che:dcm4che-assembly:[unknown-version], D:\dop\java\OHIFGateway-base\dcm4che-assembly\pom.xml, line 74, column 15
+[WARNING]
+[WARNING] It is highly recommended to fix these problems because they threaten the stability of your build.
+[WARNING]
+[WARNING] For this reason, future Maven versions might no longer support building such malformed projects.
+
+
+добавили версии
+
+        <groupId>org.codehaus.mojo</groupId>
+        <artifactId>build-helper-maven-plugin</artifactId>
+        <version>3.0.0</version>
+
+        <groupId>org.codehaus.mojo</groupId>
+        <artifactId>xml-maven-plugin</artifactId>
+        <version>1.0.1</version>
+
+        <groupId>org.apache.maven.plugins</groupId>
+        <artifactId>maven-surefire-plugin</artifactId>
+        <version>2.20.1</version>
+
+
+
+добвавить конструктор
+
+this.device.setExecutor2( Executors.newSingleThreadExecutor() );
+
+
+
+
+
+
+
 dcm4che-3.x DICOM Toolkit
 =========================
 Sources: https://github.com/dcm4che/dcm4che  
