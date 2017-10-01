@@ -132,7 +132,11 @@ public class Device implements Serializable {
     private transient final List<Association> associations = new ArrayList<>();
 
     private transient Executor executor;
+    //[injections of mikivan][0001]
+    private transient ExecutorService executorService;
+    //[end][0001]
     private transient ScheduledExecutorService scheduledExecutor;
+
     private transient volatile SSLContext sslContext;
     private transient volatile KeyManager km;
     private transient volatile TrustManager tm;
@@ -755,6 +759,19 @@ public class Device implements Serializable {
         for (Connection con : conns)
             con.unbind();
     }
+
+
+    //[injections of mikivan][0002]
+    public final ExecutorService getExecutor2() {
+        return  executorService;
+    }
+
+    public final void setExecutor2(ExecutorService executorService) {
+
+        this.executorService = executorService;
+        this.executor = executorService;
+    }
+    //[end][0002]
 
     public final Executor getExecutor() {
         return executor;
